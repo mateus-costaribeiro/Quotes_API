@@ -11,10 +11,6 @@ const PORT = process.env.PORT || 4001;
 
 app.use(express.static('public'));
 
-app.listen(PORT, () => {
-    console.log('Server is listening on port 4001.')
-})
-
 quotesRouter.get('/random', (req, res, next) => {
     const randomElement = getRandomElement(quotes)
     const randomQuote = randomElement[0]
@@ -48,4 +44,8 @@ quotesRouter.post('/', (req, res, next) => {
     } else {
         res.status(400).send('You must insert a quote and a person in your query.')
     }
+})
+
+app.listen(PORT, () => {
+    console.log('Server is listening on port 4001.')
 })
